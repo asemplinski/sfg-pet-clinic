@@ -2,10 +2,11 @@ package alex.springframework.sfgpetclinic.services.map;
 
 import alex.springframework.sfgpetclinic.model.Pet;
 import alex.springframework.sfgpetclinic.services.CrudService;
+import alex.springframework.sfgpetclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
 
     @Override

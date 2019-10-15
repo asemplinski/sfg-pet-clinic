@@ -1,12 +1,12 @@
 package alex.springframework.sfgpetclinic.services.map;
 
 import alex.springframework.sfgpetclinic.model.Owner;
-import alex.springframework.sfgpetclinic.services.CrudService;
 import alex.springframework.sfgpetclinic.services.OwnerService;
-
-import javax.persistence.Id;
+import org.springframework.stereotype.Service;
 import java.util.Set;
 
+
+@Service
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private  Owner owner;

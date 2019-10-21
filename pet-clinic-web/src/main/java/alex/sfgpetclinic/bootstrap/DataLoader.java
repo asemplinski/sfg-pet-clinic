@@ -14,6 +14,8 @@ import alex.springframework.services.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -42,9 +44,23 @@ public class DataLoader implements CommandLineRunner {
         PetType savedCatType = petTypeService.save(catPetType);
         System.out.println("Saved Cat Pet Type");
 
+
+
+
         Owner owner1 = new Owner();
         owner1.setFirstName("Alex");
         owner1.setLastName("Semplinski");
+        owner1.setAddress("4009 W 52nd.");
+        owner1.setCity("Denver");
+        owner1.setTelephone("408-497-7781");
+
+        Pet alexsdog = new Pet();
+        alexsdog.setPetType(dogPetType);
+        alexsdog.setOwner(owner1);
+        alexsdog.setName("Utah");
+        alexsdog.setBirthdate(LocalDate.now());
+
+        owner1.getPets().add(alexsdog);
 
         ownerService.save(owner1);
 
@@ -53,6 +69,18 @@ public class DataLoader implements CommandLineRunner {
         Owner owner2 = new Owner();
         owner2.setFirstName("David");
         owner2.setLastName("Schmidt");
+        owner2.setAddress("1611 Mullberry Lane");
+        owner2.setCity("San Jose");
+        owner2.setTelephone("408-540-9847");
+
+        Pet davesCat = new Pet();
+        davesCat.setPetType(catPetType);
+        davesCat.setOwner(owner2);
+        davesCat.setName("Nigel");
+        davesCat.setBirthdate(LocalDate.now());
+
+        owner2.getPets().add(davesCat);
+
 
         ownerService.save(owner2);
 

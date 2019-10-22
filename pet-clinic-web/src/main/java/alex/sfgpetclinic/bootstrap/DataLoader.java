@@ -2,9 +2,6 @@ package alex.sfgpetclinic.bootstrap;
 
 import alex.springframework.model.*;
 import alex.springframework.services.*;
-import alex.springframework.services.map.OwnerServiceMap;
-import alex.springframework.services.map.PetTypeServiceMap;
-import alex.springframework.services.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,13 +15,15 @@ public class DataLoader implements CommandLineRunner {
     private  final VetService vetService;
     private  final PetTypeService petTypeService;
     private final VetSpecialtyService vetSpecialtyService;
+    private final VisitService visitService;
 
 
-    public DataLoader(OwnerServiceMap ownerService, VetServiceMap vetService, PetTypeServiceMap petTypeService, VetSpecialtyService vetSpecialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, VetSpecialtyService vetSpecialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.vetSpecialtyService = vetSpecialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -65,6 +64,13 @@ public class DataLoader implements CommandLineRunner {
         owner1.getPets().add(alexsdog);
 
         ownerService.save(owner1);
+
+        Visit dogVisit = new Visit();
+        dogVisit.setPet(alexsdog);
+        dogVisit.setDate(LocalDate.now());
+        dogVisit.setDescription("Sneezy Dog");
+
+        visitService.save(dogVisit);
 
         System.out.println();
 

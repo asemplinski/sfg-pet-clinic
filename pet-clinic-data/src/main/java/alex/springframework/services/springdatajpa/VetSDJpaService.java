@@ -4,13 +4,14 @@ import alex.springframework.model.Vet;
 import alex.springframework.repositories.VetRepository;
 import alex.springframework.repositories.VetSpecialityRepository;
 import alex.springframework.services.VetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Service
-//@Profile("springdatajpa")
+@Profile("springdatajpa")
 public class VetSDJpaService implements VetService {
 
     private final VetRepository vetRepository;

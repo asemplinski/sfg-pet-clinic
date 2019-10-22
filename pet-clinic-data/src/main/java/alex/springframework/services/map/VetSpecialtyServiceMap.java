@@ -2,11 +2,13 @@ package alex.springframework.services.map;
 
 import alex.springframework.model.VetSpecialty;
 import alex.springframework.services.VetSpecialtyService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class VetSpecialtyServiceMap extends AbstractMapService<VetSpecialty, Long> implements VetSpecialtyService {
 
     @Override

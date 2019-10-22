@@ -4,11 +4,13 @@ import alex.springframework.model.Vet;
 import alex.springframework.model.VetSpecialty;
 import alex.springframework.services.VetService;
 import alex.springframework.services.VetSpecialtyService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default", "map"})
 public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     private final VetSpecialtyService vetSpecialtyService;
@@ -28,6 +30,7 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet object) {
+
         if (object.getSpecialties().size() >0){
             object.getSpecialties().forEach(specialty -> {
                 if (specialty.getId() == null){
